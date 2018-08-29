@@ -1,0 +1,51 @@
+﻿@page
+@model Cinema.Web.Areas.Admin.Pages.Items.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<a asp-page="/Items/Create" class="btn btn-success">Add new item</a>
+<br />
+<br />
+
+@if (Model.Items.Count() == 0)
+{
+    <h3>None yet.</h3>
+}
+else
+{
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        @item.Price leva
+                    </td>
+                    <td>
+                        <a asp-page="/Items/Details" asp-route-id="@item.Id" class="btn btn-default">
+                            Details
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+}

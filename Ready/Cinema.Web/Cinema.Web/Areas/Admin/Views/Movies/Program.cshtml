@@ -1,0 +1,91 @@
+﻿@model IEnumerable<MovieConciseViewModel>
+@{
+    ViewData["Title"] = "Program";
+}
+
+<h2>The movies this week</h2>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">09:00</th>
+            <th scope="col">11:00</th>
+            <th scope="col">13:00</th>
+            <th scope="col">15:00</th>
+            <th scope="col">17:00</th>
+            <th scope="col">19:00</th>
+            <th scope="col">21:00</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Monday</th>
+            @foreach (var movie in Model)
+            {
+                <td><a asp-area="Admin" asp-controller="Movies" asp-action="Details" asp-route-id="@movie.Id">@movie.Title</a></td>
+            }           
+        </tr>
+        <tr>
+            <th scope="row">Tuesday</th>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <th scope="row">Wednesday</th>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <th scope="row">Thursday</th>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <th scope="row">Friday</th>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <th scope="row">Saturday</th>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <th scope="row">Sunday</th>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+    </tbody>
+</table>
+

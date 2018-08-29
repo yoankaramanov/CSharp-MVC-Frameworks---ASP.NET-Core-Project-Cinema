@@ -1,0 +1,63 @@
+﻿@page
+
+@using Microsoft.AspNetCore.Identity
+@using Cinema.Models
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@model Cinema.Web.Areas.Admin.Pages.Items.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+
+    <br />
+    <br />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        @item.Price leva
+                    </td>
+                    <td>
+                        <a asp-page="/Items/Details" asp-route-id="@item.Id" class="btn btn-default">
+                            Details
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+
+}
+else
+{
+    <h1>Welcome to Paradise Cinema!</h1>
+    <h3>Please <a asp-area="Identity" asp-controller="Account" asp-action="Login">login</a> or <a asp-area="Identity" asp-controller="Account" asp-action="Register">register</a> to proceed.</h3>
+}
+
+
+

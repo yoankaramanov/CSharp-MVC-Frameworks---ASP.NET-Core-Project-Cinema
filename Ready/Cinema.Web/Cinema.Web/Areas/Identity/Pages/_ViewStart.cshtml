@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Cinema.Models
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@if (User.IsInRole("Administrator"))
+{
+    Layout = "_AdminLayout.cshtml";
+}
+else
+{
+ 
+    Layout = "/Views/Shared/_Layout.cshtml";
+    
+}
+
+

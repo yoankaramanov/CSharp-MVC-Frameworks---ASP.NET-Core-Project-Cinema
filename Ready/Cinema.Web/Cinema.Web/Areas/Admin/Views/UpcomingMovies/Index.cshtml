@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MovieConciseViewModel>
+@{
+    ViewData["Title"] = "upcoming Movies";
+}
+
+<h2>Upcoming Movies</h2>
+
+
+@if (Model.Count() == 0)
+{
+    <h3>None yet.</h3>
+}
+
+    <h5>
+        <a asp-area="Admin" asp-controller="UpcomingMovies" asp-action="Create" class="btn btn-success">
+            Add upcoming movie
+        </a>
+    </h5>
+
+
+
+<div class="row">
+
+    @Html.DisplayForModel()
+
+</div>
+

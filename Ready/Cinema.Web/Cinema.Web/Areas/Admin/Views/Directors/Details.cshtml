@@ -1,0 +1,55 @@
+﻿@model DirectorDetailsViewModel
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <img src="@Model.ImageUrl" width="400" height="600" alt="Cover image for @Model.FullName" />
+        </div>
+        <div class="col-md-7">
+            <h1>@Model.FullName</h1>
+            @if (Model.Movies.Count == 0 && Model.UpcomingMovies.Count == 0)
+            {
+                <h2>Movies: None</h2>
+            }
+            else
+            {
+                <h2>Movies:</h2>
+                <br />
+                <ul>
+                    @foreach (var movie in Model.Movies)
+                    {
+                        <h4>
+                            <li>
+                                <a asp-area="Admin" asp-controller="Movies" asp-action="Details" asp-route-id="@movie.Id">
+                                    @movie.Title
+                                </a>
+                            </li>
+                        </h4>
+                    }
+                    @foreach (var movie in Model.UpcomingMovies)
+                    {
+                        <h4>
+                            <li>
+                                <a asp-area="Admin" asp-controller="UpcomingMovies" asp-action="Details" asp-route-id="@movie.Id">
+                                    @movie.Title
+                                </a>
+                            </li>
+                        </h4>
+                    }
+                </ul>
+            }
+
+
+            <h2>
+                <a asp-area="Admin" asp-controller="Directors" asp-action="Delete" asp-route-id="@Model.Id"
+                   class="btn btn-warning">
+                    Delete
+                </a>
+            </h2>
+        </div>
+
+
+
+    </div>
+</div>

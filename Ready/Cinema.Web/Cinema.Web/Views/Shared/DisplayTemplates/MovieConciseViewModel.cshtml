@@ -1,0 +1,8 @@
+﻿@model MovieConciseViewModel
+
+<div class="col-sm-4">
+    <img src="@Model.ImageUrl" width="200" height="300" alt="Cover image for @Model.Title" /><br />
+    <a asp-action="Details" asp-route-id="@Model.Id"><strong>@Model.Title</strong></a>
+</div>
+
+

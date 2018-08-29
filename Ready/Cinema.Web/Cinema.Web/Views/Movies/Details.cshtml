@@ -1,0 +1,54 @@
+﻿@model MovieDetailsViewModel
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <img src="@Model.ImageUrl" width="400" height="600" alt="Cover image for @Model.Title" />
+        </div>
+        <div class="col-md-7">
+            <h1>@Model.Title</h1>
+            <h3>
+                Director: <a asp-area="" asp-controller="Directors" asp-action="Details" asp-route-id="@Model.Director.Id">
+                    @Model.Director.FullName
+                </a>
+            </h3>
+            <h3>Lenght: @Model.Lenght minutes</h3>
+            <h3>Actors: @Model.Actors </h3>
+            <h3>ReleaseDate: @Model.ReleaseDate</h3>
+            <h3>Description: @Model.Description</h3>
+            <td>
+                <h2>                  
+                    <a asp-area="" asp-controller="Reviews" asp-action="Create" asp-route-id="@Model.Id"
+                       class="btn btn-success">
+                        Write a review
+                    </a>
+                </h2>               
+            </td>
+            
+        </div>
+        @if (Model.Reviews.Count == 0)
+        {
+            <h2><strong>Reviews:</strong> None</h2>
+        }
+        else
+        {
+            <h2><strong>Reviews:</strong></h2>
+            <br />
+            <ul>
+                @foreach (var review in Model.Reviews)
+                {
+                    <h4>
+                        <li>
+                            <strong>From:</strong>  @review.UserName<br />
+                            <strong>Review:</strong>@review.Description<br />
+                            <strong>Rating:</strong>  @review.Rating/5
+                        </li>
+                    </h4>
+                }
+            </ul>
+        }
+    </div>
+</div>
+
+
